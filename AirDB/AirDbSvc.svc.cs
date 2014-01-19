@@ -11,24 +11,24 @@ namespace AirDB
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Single)]
     public class AirDBSvc : IAirDBSvc
     {
-        private Dictionary<string, string> MainOBJ = new Dictionary<string, string>();
+        private Dictionary<string, object> MainOBJ = new Dictionary<string, object>();
 
-        public Dictionary<string, string> getColletion()
+        public Dictionary<string, object> getColletion()
         {
             return MainOBJ;
         }
 
-        public string getValue(string key)
+        public object getValue(string key)
         {
             return MainOBJ[key];
         }
 
-        public string getKey(string value)
+        public string getKey(object value)
         {
             return MainOBJ.FirstOrDefault(x => x.Value == value).Key;
         }
 
-        public void setKeyValue(string key, string value)
+        public void setKeyValue(string key, object value)
         {
             MainOBJ.Add(key, value);
         }

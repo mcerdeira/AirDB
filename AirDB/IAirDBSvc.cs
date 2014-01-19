@@ -12,16 +12,16 @@ namespace AirDB
     public interface IAirDBSvc
     {
         [OperationContract]
-        Dictionary<string, string> getColletion();
+        Dictionary<string, object> getColletion();
 
         [OperationContract]
-        string getValue(string key);
+        object getValue(string key);
 
         [OperationContract]
-        string getKey(string value);
+        string getKey(object value);
 
         [OperationContract]
-        void setKeyValue(string key, string value);
+        void setKeyValue(string key, object value);
 
         [OperationContract]
         void removeKey(string key);
