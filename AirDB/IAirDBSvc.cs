@@ -28,5 +28,8 @@ namespace AirDB
 
         [OperationContract]
         void clear();
+
+        [OperationContract]
+        void dump();
     }
 }

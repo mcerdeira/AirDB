@@ -42,5 +42,10 @@ namespace AirDB
         {
             MainOBJ.Clear();
         }
+
+        public void dump()
+        { 
+            //TODO
+        }
     }
 }
