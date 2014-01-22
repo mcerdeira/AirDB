@@ -1,4 +1,4 @@
 AirDB
 =====
 
-In memory key/value store for MVC
+In memory DataTable() based store for MVC
