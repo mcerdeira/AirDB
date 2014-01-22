@@ -37,7 +37,7 @@ namespace AirDB
             }
         }
 
-        public bool AddRow(string tablename, DataRow row)
+        public bool InsertRow(string tablename, DataRow row)
         {
             if (!Helper.tableExists(TablesMedata, tablename)) 
             {
@@ -50,7 +50,36 @@ namespace AirDB
             }
         }
 
-        public void Remove(string tablename)
+        public bool Delete(string tablename, DataRow row)
+        {
+            if (!Helper.tableExists(TablesMedata, tablename))
+            {
+                Helper.getDataTableById(TablesOBJ, tablename).Rows.Remove(row);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Delete(string tablename, string where)
+        {
+            if (!Helper.tableExists(TablesMedata, tablename))
+            {
+                foreach (DataRow row in Helper.getDataTableById(TablesOBJ, tablename).Select(where))
+                {
+                    Helper.getDataTableById(TablesOBJ, tablename).Rows.Remove(row);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Drop(string tablename)
         {
             if (Helper.tableExists(TablesMedata, tablename))
             {

@@ -20,12 +20,7 @@ namespace AirDB
 
         public static List<String> getTableNameList(List<TableMeta> dlist)
         {
-            List<String> tnlist = new List<String>();
-            foreach (TableMeta meta in dlist)
-            {
-                tnlist.Add(meta.Name);
-            }
-            return tnlist;
+            return dlist.Select(x => x.Name).ToList();
         }
     }
 }

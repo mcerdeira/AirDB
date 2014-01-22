@@ -16,10 +16,16 @@ namespace AirDB
         bool Create(string tablename, int timetolive);
 
         [OperationContract]
-        bool AddRow(string tablename, DataRow row);
+        bool InsertRow(string tablename, DataRow row);
 
         [OperationContract]
-        void Remove(string tablename);
+        bool Delete(string tablename, DataRow row);
+
+        [OperationContract]
+        bool Delete(string tablename, string where);
+
+        [OperationContract]
+        void Drop(string tablename);
 
         [OperationContract]
         DataTable Query(string query, string tablename);
