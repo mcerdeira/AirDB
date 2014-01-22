@@ -26,7 +26,7 @@ namespace AirDB
                 tm.TimeToLive = timetolive;
                 TablesMedata.Add(tm);
                 // Table itself =)
-                DataTable table = new DataTable();                
+                DataTable table = new DataTable();
                 table.TableName = tablename;
                 TablesOBJ.Add(table);
                 return true;
