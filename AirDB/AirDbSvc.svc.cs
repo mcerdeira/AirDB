@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -8,44 +9,72 @@ using System.Text;
 
 namespace AirDB
 {
+    // This behavior works as a singleton class
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Single)]
     public class AirDBSvc : IAirDBSvc
-    {
-        private Dictionary<string, object> MainOBJ = new Dictionary<string, object>();
+    {        
+        private List<DataTable> TablesOBJ = new List<DataTable>();
+        private List<TableMeta> TablesMedata = new List<TableMeta>(); // Light object to carry existing table metadata
 
-        public Dictionary<string, object> getColletion()
+        public bool Create(string tablename, int timetolive)
         {
-            return MainOBJ;
+            if (!Helper.tableExists(TablesMedata, tablename)) //TODO: Add name spaces
+            {
+                // Table metadata
+                TableMeta tm = new TableMeta();
+                tm.Name = tablename;
+                tm.TimeToLive = timetolive;
+                TablesMedata.Add(tm);
+                // Table itself =)
+                DataTable table = new DataTable();                
+                table.TableName = tablename;
+                TablesOBJ.Add(table);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public object getValue(string key)
+        public bool AddRow(string tablename, DataRow row)
         {
-            return MainOBJ[key];
+            if (!Helper.tableExists(TablesMedata, tablename)) 
+            {
+                Helper.getDataTableById(TablesOBJ, tablename).ImportRow(row);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public string getKey(object value)
+        public void Remove(string tablename)
         {
-            return MainOBJ.FirstOrDefault(x => x.Value == value).Key;
+            if (Helper.tableExists(TablesMedata, tablename))
+            {
+                TablesOBJ.Remove(Helper.getDataTableById(TablesOBJ, tablename));
+                TablesMedata.Remove(TablesMedata.Where(x => x.Name == tablename).FirstOrDefault());
+            }
         }
 
-        public void setKeyValue(string key, object value)
+        public DataTable Query(string query, string tablename)
         {
-            MainOBJ.Add(key, value);
+            DataRow[] dw = Helper.getDataTableById(TablesOBJ, tablename).Select(query);
+            DataTable dt = new DataTable();
+            dt.LoadDataRow(dw, true);
+            return dt;
         }
 
-        public void removeKey(string key)
+        public List<String> TableNames()
         {
-            MainOBJ.Remove(key);            
+            return Helper.getTableNameList(TablesMedata);
         }
 
-        public void clear()
+        public bool TableExists(string tablename)
         {
-            MainOBJ.Clear();
-        }
-
-        public void dump()
-        { 
-            //TODO
+            return Helper.tableExists(TablesMedata, tablename);
         }
     }
 }

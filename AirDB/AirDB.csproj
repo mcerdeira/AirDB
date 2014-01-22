@@ -66,8 +66,10 @@
     <Compile Include="AirDbSvc.svc.cs">
       <DependentUpon>AirDbSvc.svc</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="IAirDBSvc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableMeta.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
