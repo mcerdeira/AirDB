@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="08107593-9b83-4046-b013-33bf42b2a44e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:11651/AirDbSvc.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AirDbSvc.xsd" MetadataType="Schema" ID="613b35cb-3d56-4de2-bd0c-7b0119a47a9b" SourceId="1" SourceUrl="http://localhost:11651/AirDbSvc.svc?xsd=xsd1" />
+    <MetadataFile FileName="AirDbSvc.disco" MetadataType="Disco" ID="8c9ba1ac-b8a3-4de6-8937-957afa74a9d0" SourceId="1" SourceUrl="http://localhost:11651/AirDbSvc.svc?disco" />
+    <MetadataFile FileName="AirDBSvc.wsdl" MetadataType="Wsdl" ID="d6c580a2-b62a-45f4-9d3b-0820cea49756" SourceId="1" SourceUrl="http://localhost:11651/AirDbSvc.svc?wsdl" />
+    <MetadataFile FileName="AirDbSvc1.xsd" MetadataType="Schema" ID="17694214-4c12-447c-b424-05fcbe1089f5" SourceId="1" SourceUrl="http://localhost:11651/AirDbSvc.svc?xsd=xsd3" />
+    <MetadataFile FileName="AirDbSvc2.xsd" MetadataType="Schema" ID="4bf58eaa-53b1-489d-b166-6120baeb923d" SourceId="1" SourceUrl="http://localhost:11651/AirDbSvc.svc?xsd=xsd0" />
+    <MetadataFile FileName="AirDbSvc3.xsd" MetadataType="Schema" ID="5f8d0c35-32ca-4799-9e01-d3551a52b785" SourceId="1" SourceUrl="http://localhost:11651/AirDbSvc.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -16,8 +17,9 @@ namespace AirDB
         private List<DataTable> TablesOBJ = new List<DataTable>();
         private List<TableMeta> TablesMedata = new List<TableMeta>(); // Light object to carry existing table metadata
 
-        public bool Create(string tablename, int timetolive)
+        public string Create(string tablename, string[] columns, int timetolive)
         {
+            string result;
             if (!Helper.tableExists(TablesMedata, tablename)) //TODO: Add name spaces
             {
                 // Table metadata
@@ -27,34 +29,27 @@ namespace AirDB
                 TablesMedata.Add(tm);
                 // Table itself =)
                 DataTable table = new DataTable();
-                table.TableName = tablename;
+                table.TableName = tablename;                
+                foreach(string c in columns)
+                {
+                    table.Columns.Add(c);
+                }
                 TablesOBJ.Add(table);
-                return true;
+
+                result = "Table [{0}] created.";
             }
             else
             {
-                return false;
+                result = "Table [{0}] already exists.";
             }
+            return String.Format(result, tablename);
         }
 
-        public bool InsertRow(string tablename, DataRow row)
+        public bool InsertRow(string tablename, object[] row)
         {
-            if (!Helper.tableExists(TablesMedata, tablename)) 
+            if (Helper.tableExists(TablesMedata, tablename)) 
             {
-                Helper.getDataTableById(TablesOBJ, tablename).ImportRow(row);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool Delete(string tablename, DataRow row)
-        {
-            if (!Helper.tableExists(TablesMedata, tablename))
-            {
-                Helper.getDataTableById(TablesOBJ, tablename).Rows.Remove(row);
+                Helper.getDataTableById(TablesOBJ, tablename).Rows.Add(row);
                 return true;
             }
             else
@@ -79,21 +74,27 @@ namespace AirDB
             }
         }
 
-        public void Drop(string tablename)
+        public string Drop(string tablename)
         {
+            string result;
             if (Helper.tableExists(TablesMedata, tablename))
             {
                 TablesOBJ.Remove(Helper.getDataTableById(TablesOBJ, tablename));
                 TablesMedata.Remove(TablesMedata.Where(x => x.Name == tablename).FirstOrDefault());
+                result = "Table {0} droped.";
             }
+            else
+            {
+                result = "Table {0} does not exist.";
+            }
+            return String.Format(result, tablename);
         }
 
         public DataTable Query(string query, string tablename)
         {
-            DataRow[] dw = Helper.getDataTableById(TablesOBJ, tablename).Select(query);
-            DataTable dt = new DataTable();
-            dt.LoadDataRow(dw, true);
-            return dt;
+            DataView dv = new DataView(Helper.getDataTableById(TablesOBJ, tablename));
+            dv.RowFilter = query;
+            return dv.ToTable(tablename);
         }
 
         public List<String> TableNames()

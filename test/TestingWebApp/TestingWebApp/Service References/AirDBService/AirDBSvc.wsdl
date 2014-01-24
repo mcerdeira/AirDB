@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AirDBSvc" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:11651/AirDbSvc.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:11651/AirDbSvc.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:11651/AirDbSvc.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:11651/AirDbSvc.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAirDBSvc_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_InsertRow_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRow" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_InsertRow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_Drop_InputMessage">
+    <wsdl:part name="parameters" element="tns:Drop" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_Drop_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DropResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_Query_InputMessage">
+    <wsdl:part name="parameters" element="tns:Query" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_Query_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_TableNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:TableNames" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_TableNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TableNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_TableExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:TableExists" />
+  </wsdl:message>
+  <wsdl:message name="IAirDBSvc_TableExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TableExistsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAirDBSvc">
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAirDBSvc/Create" message="tns:IAirDBSvc_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAirDBSvc/CreateResponse" message="tns:IAirDBSvc_Create_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAirDBSvc/InsertRow" message="tns:IAirDBSvc_InsertRow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAirDBSvc/InsertRowResponse" message="tns:IAirDBSvc_InsertRow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAirDBSvc/Delete" message="tns:IAirDBSvc_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAirDBSvc/DeleteResponse" message="tns:IAirDBSvc_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Drop">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAirDBSvc/Drop" message="tns:IAirDBSvc_Drop_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAirDBSvc/DropResponse" message="tns:IAirDBSvc_Drop_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAirDBSvc/Query" message="tns:IAirDBSvc_Query_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAirDBSvc/QueryResponse" message="tns:IAirDBSvc_Query_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TableNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAirDBSvc/TableNames" message="tns:IAirDBSvc_TableNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAirDBSvc/TableNamesResponse" message="tns:IAirDBSvc_TableNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TableExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAirDBSvc/TableExists" message="tns:IAirDBSvc_TableExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAirDBSvc/TableExistsResponse" message="tns:IAirDBSvc_TableExists_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAirDBSvc" type="tns:IAirDBSvc">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IAirDBSvc/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRow">
+      <soap:operation soapAction="http://tempuri.org/IAirDBSvc/InsertRow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IAirDBSvc/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Drop">
+      <soap:operation soapAction="http://tempuri.org/IAirDBSvc/Drop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation soapAction="http://tempuri.org/IAirDBSvc/Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TableNames">
+      <soap:operation soapAction="http://tempuri.org/IAirDBSvc/TableNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TableExists">
+      <soap:operation soapAction="http://tempuri.org/IAirDBSvc/TableExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AirDBSvc">
+    <wsdl:port name="BasicHttpBinding_IAirDBSvc" binding="tns:BasicHttpBinding_IAirDBSvc">
+      <soap:address location="http://localhost:11651/AirDbSvc.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

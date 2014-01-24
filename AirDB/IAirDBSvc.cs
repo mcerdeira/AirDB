@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,19 +14,16 @@ namespace AirDB
     public interface IAirDBSvc
     {
         [OperationContract]
-        bool Create(string tablename, int timetolive);
+        string Create(string tablename, string[] columns, int timetolive);
 
         [OperationContract]
-        bool InsertRow(string tablename, DataRow row);
-
-        [OperationContract]
-        bool Delete(string tablename, DataRow row);
+        bool InsertRow(string tablename, object[] row);
 
         [OperationContract]
         bool Delete(string tablename, string where);
 
         [OperationContract]
-        void Drop(string tablename);
+        string Drop(string tablename);
 
         [OperationContract]
         DataTable Query(string query, string tablename);
